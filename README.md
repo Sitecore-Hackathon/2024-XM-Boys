@@ -189,8 +189,4 @@ And you can embed external images too:
 
 ## Comments
 
-If you'd like to make additional comments that is important for your module entry.
-
-```
-
-```
+It is important to configure Azure Open AI properly, as well as ensuring proper network connectivity between Jarvis API, Jarvis UI, and the XM Cloud Instance (Docker containers).
