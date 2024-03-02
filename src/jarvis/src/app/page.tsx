@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './page.module.css';
-import React, { FormEvent, use } from 'react';
+import React, { FormEvent } from 'react';
 import {
   ChakraProvider,
   Modal,
@@ -29,7 +29,12 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
-  Box
+  Box,
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Wrap
 } from '@chakra-ui/react';
 import { AsyncCreatableSelect, AsyncSelect, CreatableSelect, Select } from 'chakra-react-select';
 import sitecoreTheme, { toastOptions } from '@sitecore/blok-theme';
@@ -41,7 +46,13 @@ import {
   mdiInbox,
   mdiCreation
 } from '@mdi/js';
-import { getParentId, getTemplate, getTemplates } from '@/services/jarvis';
+import {
+  getParentId,
+  getTemplate,
+  getTemplates,
+  generateContent,
+  createItemInSitecore
+} from '@/services/jarvis';
 
 type OptionType = { label: string; value: string } | null;
 interface ItemNode {
@@ -67,12 +78,15 @@ export default function Home() {
   const [parent, setParent] = React.useState([]);
   const [itemNode, setItemNode] = React.useState<GroupedItems>({});
   const [context, setContext] = React.useState('');
+  const [fieldType, setFieldType] = React.useState('');
+  const [prompt, setPrompt] = React.useState('');
+  const [currentFieldName, setCurrentFieldName] = React.useState('');
+  const [promptResponse, setPromptResponse] = React.useState('');
 
   React.useEffect(() => {
     const fetchItems = async () => {
       try {
         const formattedOptions = await getTemplates();
-        console.log(formattedOptions);
         setOptions(formattedOptions);
       } catch (error) {
         console.error('Failed to fetch items:', error);
@@ -91,7 +105,6 @@ export default function Home() {
         try {
           const formattedOptions = await getParentId(selectedOption?.value || options[0]?.value);
           setParent(formattedOptions);
-          console.log('parent', parent);
         } catch (error) {
           console.error('Failed to fetch parent options:', error);
         }
@@ -104,11 +117,35 @@ export default function Home() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    // const response = await fetch("/api/hello", {
-    //     method: "POST",
-    //     body: formData,
-    // });
-    console.log('submit');
+    const response = await createItemInSitecore(
+      formData.get('parentId') as string,
+      formData.get('templateId') as string,
+      formData.get('name') as string,
+      [
+        {
+          name: 'heading',
+          value: formData.get('heading') as string
+        },
+        {
+          name: 'copy',
+          value: formData.get('copy') as string
+        },
+        {
+          name: 'primaryCta',
+          value: `<link text='${formData.get(
+            'primaryCta'
+          )}' linktype='external' url='https://www.google.com' anchor='' target='' />`
+        },
+        {
+          name: 'secondaryCta',
+          value: `<link text='${formData.get(
+            'secondaryCta'
+          )}' linktype='external' url='https://www.google.com' anchor='' target='' />`
+        }
+      ]
+    );
+
+    console.log(response);
   }
 
   function handleContextInput(event: React.FocusEvent<HTMLTextAreaElement>) {
@@ -131,6 +168,27 @@ export default function Home() {
       acc[sectionName].push(item);
       return acc;
     }, {} as GroupedItems);
+  }
+
+  async function generateContentHandler() {
+    try {
+      const response = await generateContent(context, prompt, fieldType);
+      setPromptResponse(response.fieldContent);
+    } catch (error) {
+      console.error('Failed to generate content:', error);
+    }
+  }
+
+  function handleUseGeneratedContent() {
+    const input = document.querySelector(`input[name="${currentFieldName}"]`);
+    if (input) {
+      input.setAttribute('value', promptResponse);
+    }
+    const textArea = document.querySelector(`textarea[name="${currentFieldName}"]`);
+    if (textArea) {
+      (textArea as HTMLInputElement).value = promptResponse;
+    }
+    onClose();
   }
 
   return (
@@ -206,12 +264,16 @@ export default function Home() {
             />
           </FormControl>
           <FormControl>
+            <FormLabel>Name</FormLabel>
+            <Input name="name" />
+          </FormControl>
+          <FormControl>
             <FormLabel>Select a Template</FormLabel>
             <Select
               selectedOptionStyle="check"
               onChange={changeSelectTemplateHandler}
               options={options}
-              name="template"
+              name="templateId"
             />
           </FormControl>
           <FormControl>
@@ -220,7 +282,7 @@ export default function Home() {
               selectedOptionStyle="check"
               //   onChange={changeSelectHandler}
               options={parent}
-              name="template"
+              name="parentId"
             />
           </FormControl>
 
@@ -239,9 +301,21 @@ export default function Home() {
                       <FormLabel>{item.node.title}</FormLabel>
                       {item.node.type !== 'Rich Text' ? (
                         <InputGroup>
-                          <Input name={item.node.name} />
-                          <InputRightAddon padding="0">
-                            <Button variant="ai" borderRadius="0" onClick={onOpen}>
+                          <Input name={item.node.name} key={item.node.name} />
+                          <InputRightAddon className="inputRightAddon" padding="0">
+                            <Button
+                              variant="ai"
+                              borderTopLeftRadius="0"
+                              borderBottomLeftRadius="0"
+                              borderTopRightRadius="6px"
+                              borderBottomRightRadius="6px"
+                              className="aiButtonInputType"
+                              onClick={() => {
+                                setFieldType(item.node.type);
+                                setCurrentFieldName(item.node.name);
+                                onOpen();
+                              }}
+                            >
                               <Icon>
                                 <path d={mdiCreation} />
                               </Icon>
@@ -251,12 +325,16 @@ export default function Home() {
                         </InputGroup>
                       ) : (
                         <div className={styles.textAreaContainer}>
-                          <Textarea name={item.node.name} />
+                          <Textarea name={item.node.name} borderRadius="0" />
                           <Button
                             variant="ai"
                             borderRadius="0"
                             className={styles.aiButtonTextArea}
-                            onClick={onOpen}
+                            onClick={() => {
+                              setFieldType(item.node.type);
+                              setCurrentFieldName(item.node.name);
+                              onOpen();
+                            }}
                             leftIcon={
                               <Icon>
                                 <path d={mdiCreation} />
@@ -282,17 +360,32 @@ export default function Home() {
         <Modal size={'md'} onClose={onClose} isOpen={isOpen}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal title</ModalHeader>
+            <ModalHeader>{fieldType}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <FormControl>
                 <FormLabel>Enter Your Prompt Please</FormLabel>
-                <Textarea value="Hola que hace" />
+                <Textarea
+                  onChange={event => {
+                    setPrompt(event.target.value);
+                  }}
+                  defaultValue="Enter a Prompt please!"
+                />
               </FormControl>
+              <Alert marginBlockStart={4}>
+                <AlertIcon />
+                <Wrap>
+                  <AlertTitle>Generated Content</AlertTitle>
+                  <AlertDescription>
+                    {promptResponse === '' ? 'No content generated yet' : promptResponse}
+                  </AlertDescription>
+                </Wrap>
+              </Alert>
             </ModalBody>
             <ModalFooter className={styles.modalFooter}>
               <Button
                 variant="ai"
+                onClick={generateContentHandler}
                 leftIcon={
                   <Icon>
                     <path d={mdiCreation} />
@@ -301,7 +394,7 @@ export default function Home() {
               >
                 Generate
               </Button>
-              <Button onClick={onClose}>Close</Button>
+              <Button onClick={handleUseGeneratedContent}>Use</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
