@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../../.sitecore/schemas/ModuleFile.schema.json",
+    "namespace": "Feature.Jarvis",
+    "items": {
+        "includes": [
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Feature/Jarvis",
+                "allowedPushOperations": "createUpdateAndDelete"
+            }
+        ]
+    }
+}
