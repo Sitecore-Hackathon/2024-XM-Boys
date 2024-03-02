@@ -4,7 +4,7 @@
   "version": "21.6.0",
   "private": true,
   "config": {
-    "appName": "sxastarter",
+    "appName": "XMBoys",
     "rootPlaceholders": [
       "jss-main"
     ],
@@ -97,3 +97,4 @@
     "start:watch-components": "ts-node --project tsconfig.scripts.json scripts/generate-component-builder/index.ts --watch"
   }
 }
+
