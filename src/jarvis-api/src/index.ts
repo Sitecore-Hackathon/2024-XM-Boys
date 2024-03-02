@@ -1,13 +1,17 @@
 import express, { Request, Response } from 'express';
 import templateRoutes from './routes/templates';
+import itemRoutes from './routes/items';
+import aiRoutes from './routes/ai';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/templates', templateRoutes);
+app.use('/api/templates', templateRoutes);
+app.use('/api/items', itemRoutes);
+app.use('/api/ai', aiRoutes);
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/api/', (req: Request, res: Response) => {
     res.send('Hello, TypeScript Express!');
 });
 
