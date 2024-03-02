@@ -41,6 +41,7 @@ import {
   mdiInbox,
   mdiCreation
 } from '@mdi/js';
+import { getParentId, getTemplate, getTemplates } from '@/services/jarvis';
 
 type OptionType = { label: string; value: string } | null;
 interface ItemNode {
@@ -70,12 +71,7 @@ export default function Home() {
   React.useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch('https://a0cb-186-46-60-142.ngrok-free.app/api/templates');
-        const data = await response.json();
-        const formattedOptions = data.map((item: { id: string; name: string }) => ({
-          value: item.id,
-          label: item.name
-        }));
+        const formattedOptions = await getTemplates();
         console.log(formattedOptions);
         setOptions(formattedOptions);
       } catch (error) {
@@ -93,16 +89,7 @@ export default function Home() {
       if (options.length > 0) {
         // Make sure there are options available
         try {
-          const response = await fetch(
-            `https://a0cb-186-46-60-142.ngrok-free.app/api/items/parentOptions/${
-              selectedOption?.value || options[0]?.value
-            }`
-          );
-          const data = await response.json();
-          const formattedOptions = data.map((item: { id: string; name: string }) => ({
-            value: item.id,
-            label: item.name
-          }));
+          const formattedOptions = await getParentId(selectedOption?.value || options[0]?.value);
           setParent(formattedOptions);
           console.log('parent', parent);
         } catch (error) {
@@ -130,11 +117,8 @@ export default function Home() {
 
   async function changeSelectTemplateHandler(option: OptionType) {
     setSelectedOption(option);
-    const response = await fetch(
-      `https://a0cb-186-46-60-142.ngrok-free.app/api/templates/${option?.value}`
-    );
-    const data = await response.json();
-    const grouped = groupItemsBySection(data?.itemTemplate?.ownFields?.edges);
+    const response = await getTemplate(option?.value as string);
+    const grouped = groupItemsBySection(response?.itemTemplate?.ownFields?.edges);
     setItemNode(grouped);
   }
 

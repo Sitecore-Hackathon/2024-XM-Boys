@@ -21,8 +21,10 @@
         "typescript": "^5.3.3"
     },
     "dependencies": {
+        "@types/cors": "^2.8.17",
         "@types/debug": "^4.1.12",
         "@types/url-parse": "^1.4.11",
+        "cors": "^2.8.5",
         "debug": "^4.3.4",
         "dotenv": "^16.4.5",
         "graphql": "^16.8.1",
