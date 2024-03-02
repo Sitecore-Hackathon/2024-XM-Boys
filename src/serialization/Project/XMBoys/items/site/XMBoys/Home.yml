@@ -34,18 +34,12 @@ Languages:
               s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames&amp;BackgroundImage&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=1"
               s:ph="headless-main" />
             <r
-              uid="{C80C0EEA-2B46-4EED-A1DD-DDA41B8ACEA7}"
-              p:after="r[@uid='{FE82B07E-78AD-42E2-A53F-1243BBD6C99F}']"
-              s:id="{15CABDFF-FFD9-48F4-826D-A4C3D7868D3A}"
-              s:par="ColumnWidth1=%7B89647981-C99C-44E3-A55E-65BFF555E4C3%7D&amp;ColumnWidth2=%7B89647981-C99C-44E3-A55E-65BFF555E4C3%7D&amp;ColumnWidth3&amp;ColumnWidth4&amp;ColumnWidth5&amp;ColumnWidth6&amp;ColumnWidth7&amp;ColumnWidth8&amp;GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;SplitterSize=2&amp;EnabledPlaceholders=1%2C2&amp;FieldNames&amp;Styles1&amp;Styles2&amp;Styles3&amp;Styles4&amp;Styles5&amp;Styles6&amp;Styles7&amp;Styles&amp;Styles8&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
-              s:ph="/headless-main/container-1" />
-            <r
-              uid="{E03DADF3-5E07-4258-A53F-1B4459D08A9C}"
+              uid="{B49CE2D1-E68E-4284-90F6-56255462B5D1}"
               p:after="*[1=2]"
-              s:ds="local:/Data/Text 1"
-              s:id="{9C6D53E3-FE57-4638-AF7B-6D68304C7A94}"
-              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BE58746AC-0150-4512-A2BB-5C48F760B183%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=3"
-              s:ph="/headless-main/container-1/column-1-2" />
+              s:ds="local:/Data/Call To Action Row"
+              s:id="{6DD1FD0E-5E53-4977-B339-0313F6383350}"
+              s:par="GridParameters=%7B7465D855-992E-4DC2-9855-A03250DFA74B%7D&amp;FieldNames=%7BC8B145A4-29D6-47FC-A766-20E05C14EE84%7D&amp;Styles&amp;CacheClearingBehavior=Clear%20on%20publish&amp;RenderingIdentifier&amp;CSSStyles&amp;DynamicPlaceholderId=2"
+              s:ph="/headless-main/container-1" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -64,14 +58,14 @@ Languages:
         sitecore\roberto.armas@verndale.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "2ab1d27d-e08a-4d40-b399-c685c73b23ad"
+      Value: "f5a1d813-afd2-415c-8923-5181bebfb462"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\roberto.armas@verndale.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240302T032358Z
+      Value: 20240302T045522Z
     - ID: "ea9b4c64-a3d4-4466-82eb-4e1dcc794d2c"
       Hint: Title
       Value: XMBoys
