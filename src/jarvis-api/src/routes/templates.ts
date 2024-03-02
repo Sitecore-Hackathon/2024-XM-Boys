@@ -1,18 +1,24 @@
 import { Router, Request, Response } from "express";
 import { Template } from "../models/templates";
-import { getTemplates } from "../services/template";
+import { getTemplates, getTemplate } from "../services/template";
 
 const router = Router();
 
 router.get("/", async (req: Request, res: Response) => {
-    const templates = await getTemplates();
-    console.log(templates);
+    const response: any = await getTemplates();
+    const templates = response.customDatasourceTemplates.nodes.map((template: any) => {
+        return {
+            id: template.templateId,
+            name: template.name,
+        } as Template;
+    });
     res.json(templates);
 });
 
-router.get("/:id", (req: Request, res: Response) => {
+router.get("/:id", async (req: Request, res: Response) => {
     let templateId = req.params.id;
-    let template = { id: templateId, name: "First Template" };
+
+    let template = await getTemplate(templateId);
     res.json(template);
 });
 
