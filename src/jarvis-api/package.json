@@ -18,6 +18,12 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "graphql-request": "^6.1.0"
+    "@types/debug": "^4.1.12",
+    "@types/url-parse": "^1.4.11",
+    "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
+    "graphql": "^16.8.1",
+    "graphql-request": "^6.1.0",
+    "url-parse": "^1.5.10"
   }
 }
