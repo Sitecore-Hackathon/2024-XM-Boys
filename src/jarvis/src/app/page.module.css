@@ -51,7 +51,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    inline-size: 50%;
     justify-content: center;
+    padding-block-start: 16px;
 }
 
 .ctaContainer {
@@ -60,4 +62,20 @@
 
 .modalFooter {
     gap: 10px;
+}
+
+
+.textAreaContainer {
+    position: relative;
+}
+
+.aiButtonTextArea {
+    position: absolute !important;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
+.accordion {
+    inline-size: 100%;
 }

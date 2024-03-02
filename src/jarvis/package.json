@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.11.0",
     "@mdi/js": "^7.4.47",
     "@sitecore/blok-theme": "^1.1.10",
+    "chakra-react-select": "^4.7.6",
     "framer-motion": "^11.0.8",
     "next": "14.1.1",
     "react": "^18",
