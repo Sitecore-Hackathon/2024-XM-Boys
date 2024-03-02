@@ -1,8 +1,8 @@
 ﻿---
-ID: "a268ef08-947f-4eb1-a0af-2d33576d4e8b"
-Parent: "71c96b0b-5dc9-43a4-92ce-c69a2d0875e0"
+ID: "4cda7d6a-16aa-4de8-82d8-701ef30b217a"
+Parent: "d0fad895-4f1b-42b5-8d7d-bda17716f071"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Project/XMBoys/Related Content/Call To Action Row/Content/secondaryCta
+Path: /sitecore/templates/Project/XMBoys/Related Content/Call To Action Row/Links/secondaryCta
 SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
@@ -12,7 +12,7 @@ SharedFields:
   Value: General Link
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 400
+  Value: 200
 Languages:
 - Language: en
   Fields:
@@ -24,22 +24,22 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20240302T045113Z
+      Value: 20240302T140941Z
     - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
       Hint: __Owner
       Value: |
-        sitecore\roberto.armas@verndale.com
+        sitecore\paul.bonilla@verndale.com
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
-        sitecore\roberto.armas@verndale.com
+        sitecore\paul.bonilla@verndale.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "e808b3af-ed69-41b2-9e6e-23103c907e94"
+      Value: "25d0ab8e-56d8-4b7a-bc8a-8b8df7674e74"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\roberto.armas@verndale.com
+        sitecore\paul.bonilla@verndale.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240302T045245Z
+      Value: 20240302T190504Z

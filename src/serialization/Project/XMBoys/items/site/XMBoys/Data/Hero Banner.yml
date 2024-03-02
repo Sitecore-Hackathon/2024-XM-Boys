@@ -1,0 +1,31 @@
+﻿---
+ID: "f657a4af-e694-45f9-af12-529077eb4ba3"
+Parent: "34b1378b-8b5c-4fc1-afce-ea907c1e981a"
+Template: "3903ca86-1dc8-47df-89c9-30541d6f0343"
+Path: /sitecore/content/XMBoys/XMBoys/Data/Hero Banner
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240302T185109Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3b5bc7f7-6a45-4364-af5f-64214b9c1d41"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240302T185109Z

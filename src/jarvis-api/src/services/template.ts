@@ -11,22 +11,23 @@ export const getTemplates = async () => {
     );
 
     const query = gql`
-        query getTemplates {
-            dataSourceTemplates(input: { database: "master" }) {
-                templates {
-                    name
-                    templateId
-                }
+    query getTemplates {
+        customDatasourceTemplates: search(query: {
+            searchStatement: {
+                criteria:[
+                    {
+                        operator:MUST,field:"__base_template_sm", value:"166a7c8b6a8c4c6db1b0f46c27ba22fc"
+                    }, 
+                    {
+                        operator: MUST, field:"_language", value:"en"
+                    }
+                ]
             }
-            customDatasourceTemplates: itemTemplates(
-                where: {
-                    database: "master"
-                    path: "{77E925DF-92A5-49AE-B54A-C37CF62DD201}"
-                }
-            ) {
-                nodes {
-                    name
-                    templateId
+        })
+    {
+                results {
+                name
+                templateId: itemId
                 }
             }
         }

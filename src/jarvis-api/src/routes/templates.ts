@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", async (req: Request, res: Response) => {
     const response: any = await getTemplates();
-    const templates = response.customDatasourceTemplates.nodes.map((template: any) => {
+    const templates = response.customDatasourceTemplates.results.map((template: any) => {
         return {
             id: template.templateId,
             name: template.name,
