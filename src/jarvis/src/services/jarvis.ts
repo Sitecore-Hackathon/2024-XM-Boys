@@ -60,3 +60,29 @@ export const generateContent = async (
     throw new Error('Failed to generate content');
   }
 };
+
+type ItemData = {
+  name: string;
+  value: string;
+}
+
+export const createItemInSitecore = async (
+  parentId: string,
+  templateId: string,
+  name: string,
+  itemData: ItemData[]
+): Promise<any> => {
+  try {
+    const client = new JarvisClient();
+    const response = await client.post('/api/items', {
+      parentId,
+      templateId,
+      name,
+      itemData
+    });
+    return response;
+  } catch (error) {
+    console.error('Failed to fetch items:', error);
+    throw new Error('Failed to generate content');
+  }
+};
