@@ -1,7 +1,8 @@
 'use client';
 
 import styles from './page.module.css';
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
+import { ItemData } from '@/services/jarvis';
 import {
   ChakraProvider,
   Modal,
@@ -73,17 +74,18 @@ interface GroupedItems {
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedOption, setSelectedOption] = React.useState<OptionType>(null);
-  const [options, setOptions] = React.useState([]);
-  const [parent, setParent] = React.useState([]);
-  const [itemNode, setItemNode] = React.useState<GroupedItems>({});
-  const [context, setContext] = React.useState('');
-  const [fieldType, setFieldType] = React.useState('');
-  const [prompt, setPrompt] = React.useState('');
-  const [currentFieldName, setCurrentFieldName] = React.useState('');
-  const [promptResponse, setPromptResponse] = React.useState('');
+  const [selectedOption, setSelectedOption] = useState<OptionType>(null);
+  const [options, setOptions] = useState([]);
+  const [parent, setParent] = useState([]);
+  const [itemNode, setItemNode] = useState<GroupedItems>({});
+  const [initialData, setInitialData] = useState([]);
+  const [context, setContext] = useState('');
+  const [fieldType, setFieldType] = useState('');
+  const [prompt, setPrompt] = useState('');
+  const [currentFieldName, setCurrentFieldName] = useState('');
+  const [promptResponse, setPromptResponse] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchItems = async () => {
       try {
         const formattedOptions = await getTemplates();
@@ -98,7 +100,7 @@ export default function Home() {
     setContext(localStorage.getItem('context') || '');
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchParentId = async () => {
       if (options.length > 0) {
         // Make sure there are options available
@@ -117,32 +119,31 @@ export default function Home() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    const entriesObject = Object.fromEntries(formData);
+    const initialDataToCompare = initialData?.itemTemplate?.ownFields?.edges.map(
+      (item: { node: { name: any; type: any } }) => {
+        return { name: item.node.name, type: item.node.type };
+      }
+    );
+
+    const filteredEntries = Object.entries(entriesObject).filter(
+      ([key, _]) => !['name', 'parentId', 'templateId', 'Please provide a context'].includes(key)
+    );
+    const resultArray = filteredEntries.map(([key, value]) => {
+      let dataItem = initialDataToCompare.filter((data: { name: string }) => data.name === key)[0];
+      if (dataItem.type === 'General Link') {
+        value = `<link text='${value}' linktype='external' url='https://www.google.com' anchor='' target='' />`;
+      }
+
+      return { name: key, value: value } as ItemData;
+    });
+
+
     const response = await createItemInSitecore(
       formData.get('parentId') as string,
       formData.get('templateId') as string,
       formData.get('name') as string,
-      [
-        {
-          name: 'heading',
-          value: formData.get('heading') as string
-        },
-        {
-          name: 'copy',
-          value: formData.get('copy') as string
-        },
-        {
-          name: 'primaryCta',
-          value: `<link text='${formData.get(
-            'primaryCta'
-          )}' linktype='external' url='https://www.google.com' anchor='' target='' />`
-        },
-        {
-          name: 'secondaryCta',
-          value: `<link text='${formData.get(
-            'secondaryCta'
-          )}' linktype='external' url='https://www.google.com' anchor='' target='' />`
-        }
-      ]
+      resultArray
     );
 
     console.log(response);
@@ -155,6 +156,7 @@ export default function Home() {
   async function changeSelectTemplateHandler(option: OptionType) {
     setSelectedOption(option);
     const response = await getTemplate(option?.value as string);
+    setInitialData(response);
     const grouped = groupItemsBySection(response?.itemTemplate?.ownFields?.edges);
     setItemNode(grouped);
   }
@@ -274,18 +276,13 @@ export default function Home() {
               onChange={changeSelectTemplateHandler}
               options={options}
               name="templateId"
+              required
             />
           </FormControl>
           <FormControl>
             <FormLabel>Parent Id</FormLabel>
-            <Select
-              selectedOptionStyle="check"
-              //   onChange={changeSelectHandler}
-              options={parent}
-              name="parentId"
-            />
+            <Select selectedOptionStyle="check" options={parent} name="parentId" required />
           </FormControl>
-
           {Object.entries(itemNode).map(([sectionName, items]) => (
             <Accordion allowToggle key={sectionName} className={styles.accordion}>
               <AccordionItem key={sectionName}>
@@ -301,7 +298,12 @@ export default function Home() {
                       <FormLabel>{item.node.title}</FormLabel>
                       {item.node.type !== 'Rich Text' ? (
                         <InputGroup>
-                          <Input name={item.node.name} key={item.node.name} />
+                          <Input
+                            name={item.node.name}
+                            key={item.node.name}
+                            data-type={item.node.type}
+                            required
+                          />
                           <InputRightAddon className="inputRightAddon" padding="0">
                             <Button
                               variant="ai"
@@ -325,11 +327,12 @@ export default function Home() {
                         </InputGroup>
                       ) : (
                         <div className={styles.textAreaContainer}>
-                          <Textarea name={item.node.name} borderRadius="0" />
+                          <Textarea name={item.node.name} borderRadius="0"  required />
                           <Button
                             variant="ai"
                             borderRadius="0"
                             className={styles.aiButtonTextArea}
+                            data-type={item.node.type}
                             onClick={() => {
                               setFieldType(item.node.type);
                               setCurrentFieldName(item.node.name);

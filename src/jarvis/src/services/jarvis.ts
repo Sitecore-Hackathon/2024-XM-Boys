@@ -61,7 +61,7 @@ export const generateContent = async (
   }
 };
 
-type ItemData = {
+export type ItemData = {
   name: string;
   value: string;
 }
