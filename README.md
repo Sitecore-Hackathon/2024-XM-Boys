@@ -155,37 +155,42 @@ For more information, refer to [How To Set Up and Configure a GPT Deployment Usi
 
     - Example: "My company sells shoes. We are running a campaign to sell new shoes for 2024, targeting teenagers."
 
+    ![Fill Context](docs/screenshots/step-1.png?raw=true "Fill Context")
+
 3. Name: This input will be used to give a name to the Sitecore item.
 
 4. Select a Template: Choose the template to work with.
 
+![Step 4](docs/screenshots/step-4.png?raw=true "Step 4")
+
 5. Choose Parent Location where this component will be saved.
+
+![Step 5](docs/screenshots/step-5.png?raw=true "Step 5")
 
 6. Based on your selection, the form will be dynamically rendered according to the component's fields.
 
-7. Fill out all the fields and use the AI Assistant for Generative AI.
+![Step 6](docs/screenshots/step-5.png?raw=true "Step 6")
 
-    - Provide contextual information about the field in the prompt.
+7.  Fill out all the fields and use the AI Assistant for Generative AI.
 
-8. Create Component Datasource.
+    -   Provide contextual information about the field in the prompt.
 
-9. Connect a component in Sitecore and connect the datasource.
+    ![Step 7](docs/screenshots/step-7.png?raw=true "Step 7")
+
+    ![Step 8](docs/screenshots/step-8.png?raw=true "Step 8")
+
+8.  Create Component Datasource.
+
+    ![Step 9](docs/screenshots/step-9.png?raw=true "Step 9")
+
+9.  Connect a component in Sitecore and connect the datasource.
+
+    ![Step 10](docs/screenshots/step-10.png?raw=true "Step 10")
+    ![Step 11](docs/screenshots/step-11.png?raw=true "Step 11")
 
 10. Enjoy the rest of your day!
 
-⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
-
-Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
-
-![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
-
-You can embed images of different formats too:
-
-![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
-
-And you can embed external images too:
-
-![Random](https://thiscatdoesnotexist.com/)
+![Step 12](docs/screenshots/step-12.png?raw=true "Step 12")
 
 ## Comments
 
