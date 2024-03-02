@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "ts-node src/index.ts",
-        "watch": "nodemon src/index.ts",
+        "dev": "cross-env NODE_OPTIONS='--inspect' nodemon src/index.ts",
         "build": "tsc",
         "serve": "node dist/index.js"
     },
