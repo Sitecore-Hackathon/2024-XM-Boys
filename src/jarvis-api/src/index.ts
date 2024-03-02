@@ -5,7 +5,7 @@ import aiRoutes from "./routes/ai";
 import { config } from "dotenv";
 import cors from "cors";
 
-config();
+config({ path: [".env.local", ".env"] });
 const app = express();
 const port = process.env.PORT || 3000;
 
