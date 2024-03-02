@@ -70,7 +70,7 @@ This repository is based on the XM Cloud starter kit.
 3. Push Items
 
 ```ps1
-dotnet siteecore ser push
+dotnet sitecore ser push
 ```
 
 ### Install Jarvis API
