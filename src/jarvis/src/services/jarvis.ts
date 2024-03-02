@@ -37,3 +37,26 @@ export const getParentId = async (templateId: string) => {
     console.error('Failed to fetch items:', error);
   }
 };
+
+type GenerateContentResponse = {
+  fieldContent: string;
+};
+
+export const generateContent = async (
+  context: string,
+  prompt: string,
+  fieldType: string
+): Promise<GenerateContentResponse> => {
+  try {
+    const client = new JarvisClient();
+    const response = await client.post('/api/ai', {
+      context: context,
+      prompt: prompt,
+      fieldType: fieldType
+    });
+    return response as GenerateContentResponse;
+  } catch (error) {
+    console.error('Failed to fetch items:', error);
+    throw new Error('Failed to generate content');
+  }
+};
