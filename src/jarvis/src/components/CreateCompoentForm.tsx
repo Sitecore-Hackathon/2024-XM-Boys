@@ -314,8 +314,7 @@ export const CreateComponentForm = () => {
             <FormControl>
               <FormLabel>Enter Your Prompt Please</FormLabel>
               <Textarea
-                placeholder="Please insert a prompt!"
-                defaultValue={`Generate a Heading for a ${currentFieldName}`}
+                placeholder={`e.g: Generate a heading for Promo Card`}
                 onChange={event => {
                   setPrompt(event.target.value);
                 }}
