@@ -10,11 +10,11 @@ You can find a very good reference to Github flavoured markdown reference in [th
 
 ## Team name
 
-⟹ XM Boys
+⟹ Write the name of your Hackathon team here
 
 ## Category
 
-⟹ 2. Gest Module for XM Cloud (AI)
+⟹ Write the name of the selected category
 
 ## Description
 
