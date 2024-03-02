@@ -57,21 +57,21 @@ This repository is based on the XM Cloud starter kit.
 
 1. In an ADMIN terminal:
 
-    ```ps1
-    .\init.ps1 -InitEnv -LicenseXmlPath "C:\path\to\license.xml" -AdminPassword "DesiredAdminPassword"
-    ```
+```ps1
+.\init.ps1 -InitEnv -LicenseXmlPath "C:\path\to\license.xml" -AdminPassword "DesiredAdminPassword"
+```
 
 2. Restart your terminal and run:
 
-    ```ps1
-    .\up.ps1
-    ```
+```ps1
+.\up.ps1
+```
 
 3. Push Items
 
-    ```ps1
-    dotnet siteecore ser push
-    ```
+```ps1
+dotnet siteecore ser push
+```
 
 ### Install Jarvis API
 
@@ -85,15 +85,15 @@ Also, this app uses a `.env.local` file to get some environment variables, so du
 
 Build the solution:
 
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
 
 After that, you need to run the solution by executing this command:
 
-    ```bash
-    npm run serve
-    ```
+```bash
+npm run serve
+```
 
 This will initialize the API app at `http://localhost:3001`
 
@@ -101,21 +101,21 @@ This will initialize the API app at `http://localhost:3001`
 
 The UI is a separate NextJS app. To do this, go to the `/src/jarvis` directory and install the dependencies:
 
-    ```bash
-    npm install
-    ```
+```bash
+npm install
+```
 
 For this project, the `.env` file only contains the URL for the API app. As it is `http://localhost:3001`, duplicate the .env file and rename it to `.env.local`.
 
 Finally, Build & run the solution:
 
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
 
-    ```bash
-    npm run start
-    ```
+```bash
+npm run start
+```
 
 This will initialize the UI at `http://localhost:3000`
 
