@@ -1,0 +1,69 @@
+@import '@sass/abstracts/mixins-verndale';
+
+.call-to-action-row {
+  background-color: var(--Primary-Blue);
+  padding-block: 48px 80px;
+  padding-inline: 20px;
+  border-radius: 0 60px 0 40px;
+  color: var(--Neutrals-White);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  @include media-breakpoint-up(xl) {
+    border-radius: 0 120px 0 60px;
+    padding-block: 64px;
+    padding-inline: 56px;
+  }
+}
+
+.call-to-action-row--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.call-to-action-row__content {
+  @include media-breakpoint-up(xxl) {
+    max-inline-size: 900px;
+  }
+}
+
+.call-to-action-row__heading {
+  font: var(--h2);
+  color: var(--Neutrals-White);
+  margin-block-end: 8px;
+
+  @include media-breakpoint-up(xl) {
+    margin-block-end: 16px;
+  }
+}
+
+.call-to-action-row__cta-wrapper {
+  margin-block-start: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 16px;
+
+  @include media-breakpoint-up(xl) {
+    flex-direction: row;
+  }
+}
+
+.call-to-action-row__stars {
+  position: absolute;
+  inset-block-end: -290px;
+  inset-inline-end: -180px;
+  inline-size: 522px;
+  max-inline-size: unset;
+  block-size: fit-content;
+
+  @include media-breakpoint-up(xl) {
+    inset-block: -100px auto;
+    inset-inline-end: -230px;
+    inline-size: 750px;
+  }
+}
+

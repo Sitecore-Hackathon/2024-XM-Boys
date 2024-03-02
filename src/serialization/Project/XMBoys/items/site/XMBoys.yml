@@ -24,6 +24,7 @@ SharedFields:
     {385F31BE-FF0C-4D84-A627-9ECD21295AFD}
     {F0EA389E-F78D-440B-9429-F04FE735344A}
     {AC1A27CA-6BF3-4D23-915E-668326D52CF1}
+    {FBDAA959-5FF8-493A-87A9-5A915F637F2B}
 - ID: "2b2fe9fd-78a6-40eb-b9f9-28409d8d3700"
   Hint: SitemapMediaItems
   Value: "{0172F6FF-7217-44C0-B6E5-A3498EAFE057}"
@@ -51,11 +52,11 @@ Languages:
         sitecore\roberto.armas@verndale.com
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "1e509602-99f2-44f9-9bf6-80b01e4498e6"
+      Value: "1fc600df-6617-4485-8fbb-7e124f53b4dd"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\roberto.armas@verndale.com
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20240302T031623Z
+      Value: 20240302T045428Z

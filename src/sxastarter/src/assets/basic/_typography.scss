@@ -1,0 +1,463 @@
+@import '@sass/abstracts/mixins-verndale';
+
+// Typography Variables
+// Always use it as a value for the 'font' property.
+
+:root {
+  --primary-font: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --secondary-font: 'Roboto', Times, 'Times New Roman', serif;
+}
+
+:root {
+  // Mobile
+  // -- Copy, Buttons, Links and Captions
+  --caption-copy-bold: normal 700 12px/140% var(--primary-font);
+  --caption-copy-bold-italic: italic 700 12px/140% var(--primary-font);
+  --caption-copy-italic: italic 400 12px/140% var(--primary-font);
+  --caption-copy-regular: normal 400 12px/140% var(--primary-font);
+  --primary-button: normal 700 14px/140% var(--primary-font);
+  --primary-copy-bold: normal 700 14px/140% var(--primary-font);
+  --primary-copy-bold-italic: italic 700 14px/140% var(--primary-font);
+  --primary-copy-italic: italic 400 14px/140% var(--primary-font);
+  --primary-copy-regular: normal 400 14px/140% var(--primary-font);
+  --primary-form-input: normal 400 16px/140% var(--primary-font);
+  --primary-link: normal 700 14px/140% var(--primary-font);
+  --secondary-button: normal 700 12px/140% var(--primary-font);
+  --secondary-copy-bold: normal 700 14px/140% var(--primary-font);
+  --secondary-copy-bold-italic: italic 700 14px/140% var(--primary-font);
+  --secondary-copy-italic: italic 400 14px/140% var(--primary-font);
+  --secondary-copy-regular: normal 400 14px/140% var(--primary-font);
+  --secondary-form-input: normal 400 14px/140% var(--primary-font);
+  --secondary-link: normal 700 14px/140% var(--primary-font);
+  // -- Headings
+  --h1: normal 300 32px/120% var(--secondary-font);
+  --h2: normal 300 28px/120% var(--secondary-font);
+  --h3: normal 300 24px/120% var(--secondary-font);
+  --h4: normal 300 18px/120% var(--secondary-font);
+  --h5: normal 300 16px/140% var(--secondary-font);
+  --h6: normal 600 14px/120% var(--primary-font);
+}
+
+@include media-breakpoint-up(md) {
+  :root {
+    // Tablet (md)
+    // -- Headings
+    --h1: normal 300 42px/120% var(--secondary-font);
+    --h2: normal 300 34px/120% var(--secondary-font);
+    --h3: normal 300 28px/120% var(--secondary-font);
+    --h4: normal 300 24px/120% var(--secondary-font);
+    --h5: normal 300 18px/120% var(--secondary-font);
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  :root {
+    // Desktop (xl)
+    // -- Copy, Buttons, Links and Captions
+    --primary-button: normal 700 16px/140% var(--primary-font);
+    --primary-copy-bold: normal 700 18px/140% var(--primary-font);
+    --primary-copy-bold-italic: italic 700 18px/140% var(--primary-font);
+    --primary-copy-italic: italic 400 18px/140% var(--primary-font);
+    --primary-copy-regular: normal 400 18px/140% var(--primary-font);
+    --primary-form-input: normal 400 18px/140% var(--primary-font);
+    --primary-link: normal 700 16px/140% var(--primary-font);
+    --secondary-button: normal 700 14px/140% var(--primary-font);
+    --secondary-copy-bold: normal 700 16px/140% var(--primary-font);
+    --secondary-copy-bold-italic: italic 700 16px/140% var(--primary-font);
+    --secondary-copy-italic: italic 400 16px/140% var(--primary-font);
+    --secondary-copy-regular: normal 400 16px/140% var(--primary-font);
+    --secondary-form-input: normal 400 16px/140% var(--primary-font);
+    --secondary-link: normal 700 16px/140% var(--primary-font);
+    // -- Headings
+    --h1: normal 300 56px/120% var(--secondary-font);
+    --h2: normal 300 42px/120% var(--secondary-font);
+    --h3: normal 300 34px/120% var(--secondary-font);
+    --h4: normal 300 28px/120% var(--secondary-font);
+    --h5: normal 300 21px/140% var(--secondary-font);
+    --h6: normal 600 16px/120% var(--primary-font); // Make sure to add 'text-transform: uppercase' to the element
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  color: var(--Primary-Black);
+  // Default Heading color
+}
+
+h1,
+.h1 {
+  font: var(--h1);
+}
+
+h2,
+.h2 {
+  font: var(--h2);
+}
+
+h3,
+.h3 {
+  font: var(--h3);
+}
+
+h4,
+.h4 {
+  font: var(--h4);
+}
+
+h5,
+.h5 {
+  font: var(--h5);
+}
+
+h6,
+.h6 {
+  font: var(--h6);
+  text-transform: uppercase;
+}
+
+p,
+.copy {
+  font: var(--primary-copy-regular);
+}
+
+.copy-bold {
+  font: var(--primary-copy-bold);
+}
+
+.copy-italic {
+  font: var(--primary-copy-italic);
+}
+
+.copy-bold-italic {
+  font: var(--primary-copy-bold-italic);
+}
+
+.secondary-copy {
+  font: var(--secondary-copy-regular);
+}
+
+.secondary-copy-bold {
+  font: var(--secondary-copy-bold);
+}
+
+.secondary-copy-italic {
+  font: var(--secondary-copy-italic);
+}
+
+.secondary-copy-bold-italic {
+  font: var(--secondary-copy-bold-italic);
+}
+
+a,
+.link {
+  color: var(--Primary-Black); // default link color
+  font: var(--primary-link);
+  position: relative;
+  text-decoration: none;
+
+  &.link-chevron {
+    position: relative;
+
+    &::before {
+      background-color: var(--Primary-Black);
+      block-size: 2px;
+      content: '';
+      display: block;
+      inline-size: 0;
+      inset-block-end: -1px;
+      inset-inline-start: calc(50% - (13px / 2));
+      opacity: 0;
+      position: absolute;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &::after {
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M4.01087 6.21429L1.04926 9.1759C0.539246 9.68591 0.539246 10.5125 1.04926 11.0225L2.08387 12.0571L7.35145 6.78951C7.77185 6.3691 7.77185 5.68749 7.35144 5.26709L2.08387 -0.000488281L1.04926 1.03412C0.539245 1.54413 0.539245 2.37068 1.04926 2.88069L4.01087 5.84231C4.19686 6.0283 4.19686 6.0283 4.01087 6.21429Z" fill="black"/></svg>')
+        no-repeat left center;
+      background-size: contain;
+      color: transparent;
+      content: '>';
+      display: inline-block;
+      font-size: 0.9em;
+      line-height: 120%;
+      margin-inline-start: 5px;
+      position: relative;
+      top: 1px;
+      transform: translateX(0);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover::before,
+    &:focus-visible::before {
+      inline-size: calc(100% - 13px);
+      inset-inline-start: 0;
+      opacity: 1;
+    }
+  }
+
+  &--on-dark {
+    color: var(--Neutrals-White);
+    &.link-chevron {
+      &::before {
+        background-color: var(--Neutrals-White);
+      }
+
+      &::after {
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M4.01087 6.21429L1.04926 9.1759C0.539246 9.68591 0.539246 10.5125 1.04926 11.0225L2.08387 12.0571L7.35145 6.78951C7.77185 6.3691 7.77185 5.68749 7.35144 5.26709L2.08387 -0.000488281L1.04926 1.03412C0.539245 1.54413 0.539245 2.37068 1.04926 2.88069L4.01087 5.84231C4.19686 6.0283 4.19686 6.0283 4.01087 6.21429Z" fill="white"/></svg>')
+          no-repeat left center;
+      }
+    }
+  }
+
+  &:not(.link-chevron, .no-hover, .button) {
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &.link-chevron {
+      &::after {
+        top: 0;
+      }
+    }
+  }
+}
+
+.secondary-link {
+  font: var(--secondary-link);
+}
+
+button,
+.button {
+  font: var(--primary-button);
+}
+
+.secondary-button {
+  font: var(--secondary-button);
+}
+
+input,
+.input {
+  font: var(--primary-form-input);
+}
+
+.secondary-input {
+  font: var(--secondary-form-input);
+}
+
+textarea,
+.textarea {
+  font: var(--primary-form-input);
+}
+
+label,
+.label {
+  font: var(--primary-copy-regular);
+}
+
+.caption {
+  font: var(--caption-copy-regular);
+}
+
+.caption-bold {
+  font: var(--caption-copy-bold);
+}
+
+.caption-italic {
+  font: var(--caption-copy-italic);
+}
+
+.caption-bold-italic {
+  font: var(--caption-copy-bold-italic);
+}
+
+.chakra-ui-light,
+.editing-mode {
+  .rtf {
+    width: 100%;
+  }
+}
+
+.rtf {
+  color: inherit;
+  font: var(--primary-copy-regular);
+
+  > * {
+    hyphens: auto;
+    margin-block-end: 1em;
+
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  p {
+    color: inherit;
+    font: var(--primary-copy-regular);
+  }
+
+  b,
+  strong {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  i,
+  em {
+    color: inherit;
+    font-style: italic;
+  }
+
+  s,
+  strike {
+    color: inherit;
+    text-decoration: line-through;
+  }
+
+  u {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  a {
+    color: inherit;
+    font: var(--primary-link);
+    text-decoration: underline;
+  }
+
+  ul {
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      list-style-position: outside;
+      list-style-type: '•';
+      margin-inline-start: 1ch;
+      padding-inline-start: 1ch;
+
+      &::marker {
+        color: var(--Primary-Blue);
+      }
+
+      ul li {
+        list-style-position: outside;
+        list-style-type: '-';
+        margin-inline-start: 0.5ch;
+        padding-inline-start: 0.5ch;
+
+        &::marker {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  ol {
+    color: inherit;
+
+    li {
+      list-style-position: outside;
+      list-style-type: decimal;
+      margin-inline-start: 1ch;
+      padding-inline-start: 1ch;
+
+      &::marker {
+        color: inherit;
+      }
+
+      ol li {
+        list-style-position: outside;
+        list-style-type: '-';
+        margin-inline-start: 0.5ch;
+        padding-inline-start: 0.5ch;
+
+        &::marker {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  ul ul,
+  ol ul {
+    margin-block-start: 8px;
+    margin-inline-start: 15px;
+  }
+
+  ol ol,
+  ul ol {
+    margin-block-start: 8px;
+    margin-inline-start: 15px;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: inherit;
+    font: var(--primary-copy-regular);
+    width: 100%;
+
+    th,
+    td {
+      border: 1px solid;
+      border-color: inherit;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      font: var(--primary-copy-bold);
+    }
+  }
+}
+
+// Add chevron to any text element
+.add-chevron {
+  position: relative;
+
+  &::after {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M4.01087 6.21429L1.04926 9.1759C0.539246 9.68591 0.539246 10.5125 1.04926 11.0225L2.08387 12.0571L7.35145 6.78951C7.77185 6.3691 7.77185 5.68749 7.35144 5.26709L2.08387 -0.000488281L1.04926 1.03412C0.539245 1.54413 0.539245 2.37068 1.04926 2.88069L4.01087 5.84231C4.19686 6.0283 4.19686 6.0283 4.01087 6.21429Z" fill="black"/></svg>')
+      no-repeat left center;
+    background-position: center;
+    background-size: contain;
+    block-size: auto;
+    color: transparent;
+    content: '>';
+    display: inline-block;
+    font-size: 0.7em;
+    inline-size: 7px;
+    line-height: 100%;
+    margin-inline-start: 5px;
+    overflow: hidden;
+    position: relative;
+    top: 1px;
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+

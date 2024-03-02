@@ -1,0 +1,90 @@
+.button {
+    appearance: none;
+    background-color: var(--Primary-Black);
+    border: 2px solid var(--Primary-Black);
+    border-radius: 100px;
+    color: var(--Neutrals-White);
+    display: inline-flex;
+    font: var(--primary-button);
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-block-size: 44px;
+    padding-block: 4px;
+    padding-inline: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    z-index: 1;
+  
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 50%;
+      inline-size: 110%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--Neutrals-White);
+      transform: translate(-50%, -50%) scale(0);
+  
+      opacity: 0.5;
+      z-index: -1;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.2s ease-in-out;
+    }
+  
+    &:hover {
+      text-decoration: none;
+      border: 2px solid var(--Primary-Black);
+      color: var(--Primary-Black);
+  
+      &::before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+  
+  .button--secondary {
+    background-color: transparent;
+    color: var(--Primary-Black);
+  
+    &::before {
+      background-color: var(--Primary-Black);
+    }
+  
+    &:hover {
+      color: var(--Neutrals-White);
+    }
+  }
+  
+  .button--on-dark {
+    background-color: var(--Neutrals-White);
+    border-color: var(--Neutrals-White);
+    color: var(--Primary-Black);
+  
+    &::before {
+      background-color: var(--Primary-Black);
+    }
+  
+    &:hover {
+      color: var(--Neutrals-White);
+      border-color: var(--Neutrals-White);
+    }
+  }
+  
+  .button--secondary-on-dark {
+    color: var(--Neutrals-White);
+    border-color: var(--Neutrals-White);
+    background-color: transparent;
+  
+    &::before {
+      background-color: var(--Neutrals-White);
+    }
+  
+    &:hover {
+      color: var(--Primary-Black);
+      border-color: var(--Neutrals-White);
+    }
+  }
+  
+  
