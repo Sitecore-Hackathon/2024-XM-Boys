@@ -6,6 +6,7 @@ const router = Router();
 
 router.get("/", async (req: Request, res: Response) => {
     const templates = await getTemplates();
+    console.log(templates);
     res.json(templates);
 });
 
