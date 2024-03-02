@@ -30,7 +30,8 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Wrap
+  Wrap,
+  useToast
 } from '@chakra-ui/react';
 import { OptionBase, Select } from 'chakra-react-select';
 
@@ -77,6 +78,7 @@ export const CreateComponentForm = () => {
   const [prompt, setPrompt] = useState('');
   const [currentFieldName, setCurrentFieldName] = useState('');
   const [promptResponse, setPromptResponse] = useState('');
+  const toast = useToast();
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -96,7 +98,6 @@ export const CreateComponentForm = () => {
   useEffect(() => {
     const fetchParentId = async () => {
       if (options.length > 0) {
-        // Make sure there are options available
         try {
           const formattedOptions = await getParentId(
             (selectedOption?.value || options[0]?.value) as string
@@ -139,7 +140,16 @@ export const CreateComponentForm = () => {
       formData.get('templateId') as string,
       formData.get('name') as string,
       resultArray
-    );
+    ).finally(() => {
+      (event.target as HTMLFormElement).reset();
+    });
+
+    toast({
+      description: 'Component created successfully',
+      status: 'success',
+      isClosable: true,
+      duration: 5000
+    });
 
     console.log(response);
   }
@@ -187,6 +197,7 @@ export const CreateComponentForm = () => {
     }
     onClose();
   }
+
   return (
     <>
       <Text fontSize="4xl"> Create a new component</Text>
@@ -201,7 +212,7 @@ export const CreateComponentForm = () => {
         </FormControl>
         <FormControl>
           <FormLabel>Name</FormLabel>
-          <Input name="name" />
+          <Input name="name" required />
         </FormControl>
         <FormControl>
           <FormLabel>Select a Template</FormLabel>
@@ -303,10 +314,11 @@ export const CreateComponentForm = () => {
             <FormControl>
               <FormLabel>Enter Your Prompt Please</FormLabel>
               <Textarea
+                placeholder="Please insert a prompt!"
+                defaultValue={`Generate a Heading for a ${currentFieldName}`}
                 onChange={event => {
                   setPrompt(event.target.value);
                 }}
-                defaultValue="Enter a Prompt please!"
               />
             </FormControl>
             <Alert marginBlockStart={4}>
