@@ -14,13 +14,33 @@ export const getTemplates = async () => {
   }
 };
 
-export const getTemplate = async (templateId: string) => {
+export type TemplateInformation = {
+  itemTemplate: {
+    name: string;
+    templateId: string;
+    ownFields: {
+      edges: {
+        node: {
+          name: string;
+          title: string;
+          section: {
+            name: string;
+          };
+          type: string;
+        };
+      }[];
+    };
+  };
+} | null;
+
+export const getTemplate = async (templateId: string): Promise<TemplateInformation> => {
   try {
     const client = new JarvisClient();
     const response = await client.get('/api/templates/' + templateId);
-    return response;
+    return response as TemplateInformation;
   } catch (error) {
     console.error('Failed to fetch items:', error);
+    throw new Error('Failed to fetch template');
   }
 };
 
@@ -64,7 +84,7 @@ export const generateContent = async (
 export type ItemData = {
   name: string;
   value: string;
-}
+};
 
 export const createItemInSitecore = async (
   parentId: string,

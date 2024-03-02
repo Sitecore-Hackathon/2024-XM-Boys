@@ -2,9 +2,8 @@
 
 import styles from './page.module.css';
 import React, { FormEvent, useEffect, useState } from 'react';
-import { ItemData } from '@/services/jarvis';
+import { ItemData, TemplateInformation } from '@/services/jarvis';
 import {
-  ChakraProvider,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -37,8 +36,8 @@ import {
   AlertTitle,
   Wrap
 } from '@chakra-ui/react';
-import { AsyncCreatableSelect, AsyncSelect, CreatableSelect, Select } from 'chakra-react-select';
-import sitecoreTheme, { toastOptions } from '@sitecore/blok-theme';
+import { OptionBase, Select } from 'chakra-react-select';
+
 import {
   mdiDotsGrid,
   mdiWarehouse,
@@ -72,13 +71,18 @@ interface GroupedItems {
   [sectionName: string]: ItemNode[];
 }
 
+interface FieldOption extends OptionBase {
+  label: string;
+  value: string;
+}
+
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedOption, setSelectedOption] = useState<OptionType>(null);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<FieldOption[]>([]);
   const [parent, setParent] = useState([]);
   const [itemNode, setItemNode] = useState<GroupedItems>({});
-  const [initialData, setInitialData] = useState([]);
+  const [initialData, setInitialData] = useState<TemplateInformation>(null);
   const [context, setContext] = useState('');
   const [fieldType, setFieldType] = useState('');
   const [prompt, setPrompt] = useState('');
@@ -105,7 +109,9 @@ export default function Home() {
       if (options.length > 0) {
         // Make sure there are options available
         try {
-          const formattedOptions = await getParentId(selectedOption?.value || options[0]?.value);
+          const formattedOptions = await getParentId(
+            (selectedOption?.value || options[0]?.value) as string
+          );
           setParent(formattedOptions);
         } catch (error) {
           console.error('Failed to fetch parent options:', error);
@@ -130,6 +136,7 @@ export default function Home() {
       ([key, _]) => !['name', 'parentId', 'templateId', 'Please provide a context'].includes(key)
     );
     const resultArray = filteredEntries.map(([key, value]) => {
+      if (initialDataToCompare === undefined) return { name: key, value: value } as ItemData;
       let dataItem = initialDataToCompare.filter((data: { name: string }) => data.name === key)[0];
       if (dataItem.type === 'General Link') {
         value = `<link text='${value}' linktype='external' url='https://www.google.com' anchor='' target='' />`;
@@ -137,7 +144,6 @@ export default function Home() {
 
       return { name: key, value: value } as ItemData;
     });
-
 
     const response = await createItemInSitecore(
       formData.get('parentId') as string,
@@ -157,7 +163,7 @@ export default function Home() {
     setSelectedOption(option);
     const response = await getTemplate(option?.value as string);
     setInitialData(response);
-    const grouped = groupItemsBySection(response?.itemTemplate?.ownFields?.edges);
+    const grouped = groupItemsBySection(response?.itemTemplate?.ownFields?.edges ?? []);
     setItemNode(grouped);
   }
 
@@ -194,7 +200,7 @@ export default function Home() {
   }
 
   return (
-    <ChakraProvider theme={sitecoreTheme} toastOptions={toastOptions}>
+    <>
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <Tooltip label="Switch to…">
@@ -327,7 +333,7 @@ export default function Home() {
                         </InputGroup>
                       ) : (
                         <div className={styles.textAreaContainer}>
-                          <Textarea name={item.node.name} borderRadius="0"  required />
+                          <Textarea name={item.node.name} borderRadius="0" required />
                           <Button
                             variant="ai"
                             borderRadius="0"
@@ -402,6 +408,6 @@ export default function Home() {
           </ModalContent>
         </Modal>
       </main>
-    </ChakraProvider>
+    </>
   );
 }
