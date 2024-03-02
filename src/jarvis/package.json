@@ -16,17 +16,17 @@
     "@sitecore/blok-theme": "^1.1.10",
     "chakra-react-select": "^4.7.6",
     "framer-motion": "^11.0.8",
-    "next": "14.1.1",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^14.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.1",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
     "typescript": "^5"
   }
 }

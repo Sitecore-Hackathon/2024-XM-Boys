@@ -15,7 +15,7 @@ export const fetchContent = async (
             },
             {
                 role: "user",
-                content: context,
+                content: `CONTEXT: ${context}`,
             },
             {
                 role: "assistant",
@@ -23,7 +23,7 @@ export const fetchContent = async (
             },
             {
                 role: "user",
-                content: prompt,
+                content: `Using latest CONTEXT,Take into a account that field type is ${fieldType}. Resolve the folling prompt ${prompt} and just give me the text wihtout any politeness.`,
             },
         ],
         temperature: 0.7,
