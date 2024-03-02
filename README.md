@@ -67,9 +67,11 @@ This repository is based on the XM Cloud starter kit.
     .\up.ps1
     ```
 
-3. Follow the instructions to [deploy to XM Cloud](#deploy-to-xmcloud)
+3. Push Items
 
-4. Create an Edge token and [query from the edge](#query-edge)
+    ```ps1
+    dotnet siteecore ser push
+    ```
 
 ### Install Jarvis API
 
@@ -105,10 +107,14 @@ The UI is a separate NextJS app. To do this, go to the `/src/jarvis` directory a
 
 For this project, the `.env` file only contains the URL for the API app. As it is `http://localhost:3001`, duplicate the .env file and rename it to `.env.local`.
 
-Finally, run the solution:
+Finally, Build & run the solution:
 
     ```bash
-    npm run dev
+    npm run build
+    ```
+
+    ```bash
+    npm run start
     ```
 
 This will initialize the UI at `http://localhost:3000`
@@ -117,15 +123,15 @@ This will initialize the UI at `http://localhost:3000`
 
 #### Configure Jarvis API Environmental Variables
 
-| Variable                      | Description                                                                                          |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
-| PORT                          | Port where the services will be running (default: 3001)                                              |
-| GRAPH_QL_ENDPOINT             | Endpoint for the GraphQL API (e.g., "https://xmcloudcm.localhost/sitecore/api/authoring/graphql/v1") |
-| GRAPH_QL_API_KEY              | API key for accessing the Authoring GraphQL API                                                      |
-| AZURE_OPEN_AI_ENDPOINT        | Endpoint for the Azure OpenAI service (e.g., "https://{your-instance}.openai.azure.com")             |
-| AZURE_OPEN_AI_DEPLOYMENT_NAME | Name of the Azure OpenAI deployment                                                                  |
-| AZURE_OPEN_AI_API_KEY         | API key for accessing the Azure OpenAI service                                                       |
-| AZURE_OPEN_AI_API_VERSION     | API version for the Azure OpenAI service (e.g., "2024-02-15-preview")                                |
+| Variable                      | Description                                                                                                                                                                                    |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PORT                          | Port where the services will be running (default: 3001)                                                                                                                                        |
+| GRAPH_QL_ENDPOINT             | Endpoint for the GraphQL API (e.g., "https://xmcloudcm.localhost/sitecore/api/authoring/graphql/v1")                                                                                           |
+| GRAPH_QL_API_KEY              | [API key](https://doc.sitecore.com/xmc/en/developers/xm-cloud/walkthrough--enabling-and-authorizing-requests-to-the-authoring-and-management-api.html) for accessing the Authoring GraphQL API |
+| AZURE_OPEN_AI_ENDPOINT        | Endpoint for the Azure OpenAI service (e.g., "https://{your-instance}.openai.azure.com")                                                                                                       |
+| AZURE_OPEN_AI_DEPLOYMENT_NAME | Name of the Azure OpenAI deployment                                                                                                                                                            |
+| AZURE_OPEN_AI_API_KEY         | API key for accessing the Azure OpenAI service                                                                                                                                                 |
+| AZURE_OPEN_AI_API_VERSION     | API version for the Azure OpenAI service (e.g., "2024-02-15-preview")                                                                                                                          |
 
 #### Configure Jarvis API - Azure Open AI Service
 
