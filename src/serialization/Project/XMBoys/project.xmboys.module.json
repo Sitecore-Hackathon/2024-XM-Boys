@@ -1,0 +1,110 @@
+{
+    "$schema": "../../../../.sitecore/schemas/ModuleFile.schema.json",
+    "namespace": "Project.XMBoys",
+    "items": {
+        "includes": [
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Project/XMBoys",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "branchTemplates",
+                "path": "/sitecore/templates/Branches/Project/XMBoys",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "settings",
+                "path": "/sitecore/system/Settings/Project/XMBoys",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "projectMediaFolders",
+                "path": "/sitecore/Media Library/Project/XMBoys",
+                "rules": [
+                    {
+                        "path": "/shared",
+                        "allowedPushOperations": "createOnly",
+                        "scope": "singleItem"
+                    },
+                    {
+                        "path": "/XMBoys",
+                        "allowedPushOperations": "createOnly",
+                        "scope": "singleItem"
+                    }
+                ]
+            },
+            {
+                "name": "layouts",
+                "path": "/sitecore/layout/Layouts/Project/XMBoys",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "renderings",
+                "path": "/sitecore/layout/Renderings/Project/XMBoys",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "placeholderSettings",
+                "path": "/sitecore/layout/Placeholder Settings/Project/XMBoys",
+                "allowedPushOperations": "createUpdateAndDelete"
+            },
+            {
+                "name": "tenantRoot",
+                "path": "/sitecore/content/XMBoys",
+                "scope": "singleItem",
+                "allowedPushOperations": "createAndUpdate"
+            },
+            {
+                "name": "site",
+                "path": "/sitecore/content/XMBoys/XMBoys",
+                "rules": [
+                    {
+                        "path": "/home",
+                        "scope": "singleItem",
+                        "allowedPushOperations": "createOnly"
+                    },
+                    {
+                        "path": "/Media",
+                        "scope": "singleItem",
+                        "allowedPushOperations": "createAndUpdate"
+                    },
+                    {
+                        "path": "/Data",
+                        "scope": "itemAndChildren",
+                        "allowedPushOperations": "createAndUpdate"
+                    },
+                    {
+                        "path": "/Dictionary",
+                        "scope": "itemAndDescendants",
+                        "allowedPushOperations": "createOnly"
+                    },
+                    {
+                        "path": "/Presentation",
+                        "scope": "itemAndDescendants",
+                        "allowedPushOperations": "createUpdateAndDelete"
+                    },
+                    {
+                        "path": "/Settings/Site Grouping",
+                        "scope": "itemAndDescendants",
+                        "allowedPushOperations": "createOnly"
+                    },
+                    {
+                        "path": "/Settings/Standard Values",
+                        "allowedPushOperations": "createAndUpdate",
+                        "scope": "itemAndDescendants"
+                    },
+                    {
+                        "path": "/Settings",
+                        "scope": "itemAndChildren",
+                        "allowedPushOperations": "createAndUpdate"
+                    },
+                    {
+                        "path": "*",
+                        "scope": "ignored"
+                    }
+                ]
+            }
+        ]
+    }
+}

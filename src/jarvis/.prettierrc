@@ -1,0 +1,16 @@
+{
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2,
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": ["**/*.css", "**/*.scss", "**/*.hbs"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

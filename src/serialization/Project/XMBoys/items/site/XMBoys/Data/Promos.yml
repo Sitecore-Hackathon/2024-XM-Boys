@@ -1,0 +1,31 @@
+﻿---
+ID: "14c0b135-d5d2-4f93-9d15-a0b7d8fcdcf0"
+Parent: "34b1378b-8b5c-4fc1-afce-ea907c1e981a"
+Template: "8fe7f8dc-cb5d-42c2-99f8-76608c243f10"
+Path: /sitecore/content/XMBoys/XMBoys/Data/Promos
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20240302T031621Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\roberto.armas@verndale.com
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\roberto.armas@verndale.com
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2d0253b0-d1c1-428a-a81d-1616548c2aff"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\roberto.armas@verndale.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240302T031621Z

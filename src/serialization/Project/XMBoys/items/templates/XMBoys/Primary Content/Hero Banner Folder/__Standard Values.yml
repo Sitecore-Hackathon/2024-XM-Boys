@@ -1,0 +1,33 @@
+﻿---
+ID: "acbf451b-beee-4a34-995c-56b5bdfc868b"
+Parent: "3903ca86-1dc8-47df-89c9-30541d6f0343"
+Template: "3903ca86-1dc8-47df-89c9-30541d6f0343"
+Path: /sitecore/templates/Project/XMBoys/Primary Content/Hero Banner Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {70BE96F5-4B6C-4BF1-AEC9-49C9DA8BAC0C}
+    {3903CA86-1DC8-47DF-89C9-30541D6F0343}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20120621T071605Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "56165512-329e-47ed-8361-f8531b104812"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\paul.bonilla@verndale.com
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20240302T185005Z

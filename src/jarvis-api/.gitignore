@@ -1,0 +1,3 @@
+dist/
+# local env files
+.env*.local
